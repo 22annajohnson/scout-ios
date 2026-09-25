@@ -1,0 +1,495 @@
+// !$*UTF8*$!
+{
+	classes = {
+	};
+	objectVersion = 77;
+	archiveVersion = 1;
+	objects = {
+		8A1DB462BE7537747B0F0B48 = {
+			dependencies = (
+			);
+			buildConfigurationList = 33307B145661C372500370BE;
+			productReference = D07D4936E00DE4653BEE14A6;
+			productType = "com.apple.product-type.application";
+			packageProductDependencies = (
+				A2E839586331A69D8F3835EB,
+				AAD5A0A3931EFE4DE3F349A0,
+				1E517748F7E2827E2A1A639C,
+			);
+			productName = Scout;
+			isa = PBXNativeTarget;
+			fileSystemSynchronizedGroups = (
+				0D04BFEB7D64B71C74FC925C,
+				E89B30AA1DC30A6AD8C34610,
+			);
+			buildPhases = (
+				0C440EA85BFBE21D3E97FBEB,
+				5609D97C9204B0045A20684D,
+				70B6EEC0A44D0D6DBDC4CF24,
+			);
+			name = Scout;
+			buildRules = (
+			);
+		};
+		F38645E57027347347F03D19 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1608C46FD87F16AE198E4F17 = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 985959785319747668373CC6;
+			remoteGlobalIDString = 8A1DB462BE7537747B0F0B48;
+			remoteInfo = Scout;
+			proxyType = 1;
+		};
+		7C32699FF595E13B5C1315DB = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Tests/UI;
+			sourceTree = "<group>";
+		};
+		D07D4936E00DE4653BEE14A6 = {
+			path = Scout.app;
+			isa = PBXFileReference;
+			includeInIndex = 0;
+			explicitFileType = wrapper.application;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AAD5A0A3931EFE4DE3F349A0 = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DE121DB1B8145E4C974543;
+			productName = ScoutDomain;
+		};
+		924E15083A17BE22DE163F30 = {
+			isa = PBXBuildFile;
+			productRef = 1E517748F7E2827E2A1A639C;
+		};
+		E89B30AA1DC30A6AD8C34610 = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4EDC8BFAFC6BD936B849F38C = {
+			isa = PBXGroup;
+			name = Products;
+			children = (
+				D07D4936E00DE4653BEE14A6,
+				BA2067365037C11C9F1BD769,
+				09432A37044CB6D6406DF2C0,
+			);
+			sourceTree = "<group>";
+		};
+		1E517748F7E2827E2A1A639C = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DE121DB1B8145E4C974543;
+			productName = ScoutFeatures;
+		};
+		2D799B1EBF7E0BD8BE8886A2 = {
+			dependencies = (
+				CB3809007A8A38EE8776875C,
+			);
+			buildConfigurationList = 05BE7446362D0B28D4167F50;
+			productReference = BA2067365037C11C9F1BD769;
+			productType = "com.apple.product-type.bundle.unit-test";
+			packageProductDependencies = (
+				A790B15FE2E4EC856D2D4234,
+			);
+			productName = ScoutTests;
+			isa = PBXNativeTarget;
+			fileSystemSynchronizedGroups = (
+				4E545960F1BFFC134026127E,
+			);
+			buildPhases = (
+				F38645E57027347347F03D19,
+				32E5EED460260576955BD0E0,
+				E79603FB17B357E935A2A2B3,
+			);
+			name = ScoutTests;
+			buildRules = (
+			);
+		};
+		70B6EEC0A44D0D6DBDC4CF24 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB814BE3CA3B78C0734C5605 = {
+			isa = PBXGroup;
+			sourceTree = "<group>";
+			children = (
+				0D04BFEB7D64B71C74FC925C,
+				E89B30AA1DC30A6AD8C34610,
+				4E545960F1BFFC134026127E,
+				7C32699FF595E13B5C1315DB,
+				4EDC8BFAFC6BD936B849F38C,
+			);
+		};
+		CE6586174C134356BE928B58 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		749EDBA6EF370F3F0183858C = {
+			dependencies = (
+				06DC5583974F9D4C75E64097,
+			);
+			buildConfigurationList = E28A36C8D7C17901D0F0E8DC;
+			productReference = 09432A37044CB6D6406DF2C0;
+			productType = "com.apple.product-type.bundle.ui-testing";
+			packageProductDependencies = (
+			);
+			productName = ScoutUITests;
+			isa = PBXNativeTarget;
+			fileSystemSynchronizedGroups = (
+				7C32699FF595E13B5C1315DB,
+			);
+			buildPhases = (
+				A47FA65D3A0384E1E391A7F0,
+				CE6586174C134356BE928B58,
+				48E3AEDFAC7E517153731ABD,
+			);
+			name = ScoutUITests;
+			buildRules = (
+			);
+		};
+		BA2067365037C11C9F1BD769 = {
+			path = ScoutTests.xctest;
+			isa = PBXFileReference;
+			includeInIndex = 0;
+			explicitFileType = wrapper.cfbundle;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0068017414132E3B5B3455FB = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 985959785319747668373CC6;
+			remoteGlobalIDString = 8A1DB462BE7537747B0F0B48;
+			remoteInfo = Scout;
+			proxyType = 1;
+		};
+		5609D97C9204B0045A20684D = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26C9A79612F2C27981C5806F,
+				95BF3F7A4C566CE9C03083E8,
+				924E15083A17BE22DE163F30,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48E3AEDFAC7E517153731ABD = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48CA48119A5915D36766C114 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				MARKETING_VERSION = 0.1.0;
+				TEST_TARGET_NAME = Scout;
+				SUPPORTS_MACCATALYST = NO;
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@loader_path/Frameworks");
+				SWIFT_VERSION = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scout.v2.scoutuitests;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				CURRENT_PROJECT_VERSION = 1;
+			};
+			name = Release;
+		};
+		0D04BFEB7D64B71C74FC925C = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = App;
+			sourceTree = "<group>";
+		};
+		3C05BEEE7303EE3FA7B250FA = {
+			isa = XCConfigurationList;
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+			buildConfigurations = (
+				433548979C024CC63B5F3B8D,
+				B800A40FDE6F0A0218D9BCD2,
+			);
+		};
+		A47FA65D3A0384E1E391A7F0 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB3809007A8A38EE8776875C = {
+			isa = PBXTargetDependency;
+			target = 8A1DB462BE7537747B0F0B48;
+			targetProxy = 0068017414132E3B5B3455FB;
+		};
+		231F9211E5F6A3B253DCE9FB = {
+			isa = PBXBuildFile;
+			productRef = A790B15FE2E4EC856D2D4234;
+		};
+		A2E839586331A69D8F3835EB = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DE121DB1B8145E4C974543;
+			productName = ScoutData;
+		};
+		E28A36C8D7C17901D0F0E8DC = {
+			isa = XCConfigurationList;
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+			buildConfigurations = (
+				8DBE49EE771B1C525FCA34C4,
+				48CA48119A5915D36766C114,
+			);
+		};
+		05BE7446362D0B28D4167F50 = {
+			isa = XCConfigurationList;
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+			buildConfigurations = (
+				CD5F843AF628D442661B1EB2,
+				96B18FBF44D6ED5275B210B8,
+			);
+		};
+		041C8CDABCBCA78B2616E3F6 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				MARKETING_VERSION = 0.1.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Scout;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@loader_path/Frameworks");
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scout.v2.scout;
+				SUPPORTS_MACCATALYST = NO;
+				CURRENT_PROJECT_VERSION = 1;
+			};
+			name = Debug;
+		};
+		32E5EED460260576955BD0E0 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				231F9211E5F6A3B253DCE9FB,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E79603FB17B357E935A2A2B3 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33307B145661C372500370BE = {
+			isa = XCConfigurationList;
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+			buildConfigurations = (
+				041C8CDABCBCA78B2616E3F6,
+				AAA7A3A773F50B7ED99F6D0E,
+			);
+		};
+		96B18FBF44D6ED5275B210B8 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				MARKETING_VERSION = 0.1.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scout.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scout";
+				GENERATE_INFOPLIST_FILE = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@loader_path/Frameworks");
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scout.v2.scouttests;
+				SUPPORTS_MACCATALYST = NO;
+				CURRENT_PROJECT_VERSION = 1;
+			};
+			name = Release;
+		};
+		AAA7A3A773F50B7ED99F6D0E = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				MARKETING_VERSION = 0.1.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Scout;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@loader_path/Frameworks");
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scout.v2.scout;
+				SUPPORTS_MACCATALYST = NO;
+				CURRENT_PROJECT_VERSION = 1;
+			};
+			name = Release;
+		};
+		4E545960F1BFFC134026127E = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Tests/Unit;
+			sourceTree = "<group>";
+		};
+		A790B15FE2E4EC856D2D4234 = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DE121DB1B8145E4C974543;
+			productName = ScoutDomain;
+		};
+		59DE121DB1B8145E4C974543 = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+		06DC5583974F9D4C75E64097 = {
+			isa = PBXTargetDependency;
+			target = 8A1DB462BE7537747B0F0B48;
+			targetProxy = 1608C46FD87F16AE198E4F17;
+		};
+		433548979C024CC63B5F3B8D = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SWIFT_STRICT_CONCURRENCY = complete;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SDKROOT = iphoneos;
+				ONLY_ACTIVE_ARCH = YES;
+				ENABLE_TESTABILITY = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+			};
+			name = Debug;
+		};
+		CD5F843AF628D442661B1EB2 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				MARKETING_VERSION = 0.1.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scout.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scout";
+				GENERATE_INFOPLIST_FILE = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@loader_path/Frameworks");
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scout.v2.scouttests;
+				SUPPORTS_MACCATALYST = NO;
+				CURRENT_PROJECT_VERSION = 1;
+			};
+			name = Debug;
+		};
+		95BF3F7A4C566CE9C03083E8 = {
+			isa = PBXBuildFile;
+			productRef = AAD5A0A3931EFE4DE3F349A0;
+		};
+		26C9A79612F2C27981C5806F = {
+			isa = PBXBuildFile;
+			productRef = A2E839586331A69D8F3835EB;
+		};
+		0C440EA85BFBE21D3E97FBEB = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B800A40FDE6F0A0218D9BCD2 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SWIFT_STRICT_CONCURRENCY = complete;
+				CLANG_ENABLE_MODULES = YES;
+				VALIDATE_PRODUCT = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SDKROOT = iphoneos;
+				CLANG_ENABLE_OBJC_ARC = YES;
+			};
+			name = Release;
+		};
+		985959785319747668373CC6 = {
+			buildConfigurationList = 3C05BEEE7303EE3FA7B250FA;
+			packageReferences = (
+				59DE121DB1B8145E4C974543,
+			);
+			targets = (
+				8A1DB462BE7537747B0F0B48,
+				2D799B1EBF7E0BD8BE8886A2,
+				749EDBA6EF370F3F0183858C,
+			);
+			minimizedProjectReferenceProxies = 1;
+			developmentRegion = en;
+			knownRegions = (
+				en,
+				Base,
+			);
+			isa = PBXProject;
+			productRefGroup = 4EDC8BFAFC6BD936B849F38C;
+			compatibilityVersion = "Xcode 16.0";
+			attributes = {
+				LastSwiftUpdateCheck = 1600;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+			};
+			projectDirPath = "";
+			preferredProjectObjectVersion = 77;
+			hasScannedForEncodings = 0;
+			mainGroup = EB814BE3CA3B78C0734C5605;
+			projectRoot = "";
+		};
+		09432A37044CB6D6406DF2C0 = {
+			path = ScoutUITests.xctest;
+			isa = PBXFileReference;
+			includeInIndex = 0;
+			explicitFileType = wrapper.cfbundle;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8DBE49EE771B1C525FCA34C4 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				MARKETING_VERSION = 0.1.0;
+				TEST_TARGET_NAME = Scout;
+				SUPPORTS_MACCATALYST = NO;
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@loader_path/Frameworks");
+				SWIFT_VERSION = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scout.v2.scoutuitests;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				CURRENT_PROJECT_VERSION = 1;
+			};
+			name = Debug;
+		};
+	};
+	rootObject = 985959785319747668373CC6;
+}
