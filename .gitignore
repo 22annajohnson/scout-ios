@@ -1,0 +1,49 @@
+# macOS
+.DS_Store
+.AppleDouble
+._*
+
+# Xcode user state (keep project files and shared schemes)
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Build products and package caches (keep Package.resolved)
+/build/
+DerivedData/
+.build/
+.swiftpm/
+*.ipa
+*.dSYM
+*.dSYM.zip
+*.xcarchive
+
+# Local IDE settings
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Local environment, credentials, and signing material
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local.xcconfig
+Secrets.xcconfig
+*.p12
+*.p8
+*.mobileprovision
+*.provisionprofile
+*.key
+*.pem
+
+# Test and distribution output
+*.xcresult
+/coverage/
+/fastlane/report.xml
+/fastlane/Preview.html
+/fastlane/screenshots/
+/fastlane/test_output/
