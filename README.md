@@ -28,3 +28,34 @@ configuration; build output and user workspace state are not.
 The Java/Spring modular-monolith backend currently has no API contracts. No
 proposed endpoint, authentication integration, or component schema is implemented
 by this bootstrap. Those integrations must follow published backend contracts.
+
+## Build and test
+
+Xcode 16+ supports the project; CI selects Xcode 26.1 on `macos-15`. Install an iOS
+simulator runtime in Xcode before testing. Run these commands from the repo root:
+
+```sh
+make resolve
+make build
+make test-unit   # focused dependency-injection tests
+make test        # unit tests plus the launch smoke test
+```
+
+`make` lists commands without booting a simulator. Tests select an available iPhone
+from the newest installed iOS runtime and disable parallel simulator clones. To
+choose a specific device, use `make test SIMULATOR_ID=<UDID>`; find IDs with
+`xcrun simctl list devices available`. `DEVELOPER_DIR` can select another Xcode.
+
+Build output goes under `build/DerivedData`. Test results go to
+`build/TestResults.xcresult`; open them in Xcode. To rerun without overwriting the
+previous result, use `make test RESULT_BUNDLE=build/Retry.xcresult`.
+The Makefile intentionally refuses to delete existing result bundles.
+
+The `iOS` workflow runs dependency resolution, a simulator build, unit tests, and
+the launch smoke test on pull requests to `develop` and pushes to `develop`. It
+keeps result bundles for seven days, including failures, and uses read-only repo
+permissions. No signing secrets or backend credentials are needed. Add and commit
+Xcode's shared `Package.resolved` when remote package dependencies are introduced.
+
+Runner toolchain reference:
+[GitHub macOS 15 image](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md).
