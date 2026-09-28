@@ -47,5 +47,4 @@ Fixtures cover valid/invalid Markdown and YAML, documentation-only changes,
 code/configuration/unknown paths, deleted files, renamed source, manual runs, and
 missing baselines. Hosted CI performs the full iOS build and simulator tests.
 
-This change builds on the existing unmerged app-foundation and build-workflow
-PRs. Land those first, then update this branch and rerun CI before merging.
+This change extends the app foundation and build workflow already on `develop`.
