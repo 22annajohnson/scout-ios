@@ -1,0 +1,6 @@
+include:
+  - ".github/**/*.yml"
+  - ".github/**/*.yaml"
+rules:
+  require_valid_yaml: true
+  validate_github_workflow_shape: true

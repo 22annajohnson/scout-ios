@@ -1,0 +1,31 @@
+name: Repository Validation
+
+on:
+  pull_request:
+    branches: [develop]
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Markdown, YAML, and CI checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Validate Markdown
+        run: ruby .github/scripts/validate-markdown.rb
+      - name: Validate workflow YAML
+        run: ruby .github/scripts/validate-yaml.rb
+      - name: Test CI guards
+        run: python3 -m unittest discover -s .github/tests -v
