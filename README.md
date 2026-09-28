@@ -1,6 +1,11 @@
 # scout-ios
 Scout V2 consumer iOS app built with Swift and SwiftUI.
 
+## Pull requests
+
+Use the [PR template](.github/pull_request_template.md) and
+[AI review guide](.github/AI_REVIEW.md). Keep explanations short and concrete.
+
 ## App foundation
 
 Open `Scout.xcodeproj` in Xcode 16 or later, select the Scout scheme and an iOS
