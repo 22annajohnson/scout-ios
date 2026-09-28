@@ -17,16 +17,30 @@ This is the implementation plan and migration record for the user-authorized CI 
 ## Workflow behavior
 
 Both workflows run on pull requests to `develop`, pushes to `develop`, and manual
-dispatch. Repository validation runs on every change: these checks are cheap and
-always produce a visible result. iOS change detection uses the PR merge commit
+dispatch. Jobs are selected independently:
+
+| Changed files | iOS build/tests | Documentation | YAML/CI guards |
+| --- | --- | --- | --- |
+| Markdown only, outside `Resources/` | Skip | Run | Skip |
+| iOS source, tests, assets, or build configuration only | Run | Skip | Skip |
+| iOS files and Markdown | Run | Run | Skip |
+| `.github` tooling/configuration | Run | Run if Markdown validation or shared detection is affected | Run |
+| Manual run or unavailable baseline | Run | Run | Run |
+
+Markdown resources run both iOS and documentation checks. Markdown validation
+also runs when its validator, configuration, workflow, or the shared detector changes.
+Change detection uses the PR merge commit
 against its base, or the push's previous commit against its new commit. Null-delimited
-paths preserve unusual filenames. Unknown baselines conservatively run iOS.
+paths preserve unusual filenames. Unknown baselines conservatively run all checks.
 
 The `iOS validation` job succeeds only when detection succeeded and the macOS job
 either passed or was intentionally skipped for documentation-only changes. It
-fails if required tests fail or detection fails. Repository branch protection is
+fails if required tests fail or detection fails. The `Repository validation` job
+likewise requires documentation/configuration jobs to pass or be intentionally
+skipped. The small detection and final-status jobs always run so skipped work is
+distinguishable from broken filtering. Repository branch protection is
 unchanged; if required checks are configured later, use `iOS validation` and
-`Markdown, YAML, and CI checks`.
+`Repository validation`.
 
 Actions are pinned to immutable commits, have read-only repository access, and
 do not persist checkout credentials. Jobs have timeouts and superseded runs are
@@ -43,7 +57,7 @@ ruby .github/scripts/validate-yaml.rb
 python3 -m unittest discover -s .github/tests -v
 ```
 
-Fixtures cover valid/invalid Markdown and YAML, documentation-only changes,
+Fixtures cover valid/invalid Markdown and YAML, documentation-only, iOS-only, and mixed changes,
 code/configuration/unknown paths, deleted files, renamed source, manual runs, and
 missing baselines. Hosted CI performs the full iOS build and simulator tests.
 

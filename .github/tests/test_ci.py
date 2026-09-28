@@ -8,7 +8,7 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
-spec = importlib.util.spec_from_file_location("ios_changes", ROOT / ".github/scripts/ios-changes.py")
+spec = importlib.util.spec_from_file_location("ci_changes", ROOT / ".github/scripts/ci-changes.py")
 changes = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(changes)
 
@@ -37,7 +37,40 @@ class ChangeDetectionTests(unittest.TestCase):
 
     def test_documentation_only(self):
         Path("README.md").write_text("Updated\n")
-        self.assertFalse(changes.should_run("pull_request", self.base, self.commit()))
+        self.assertEqual(changes.selected_checks("pull_request", self.base, self.commit()),
+                         {"ios": False, "docs": True, "config": False})
+
+    def test_ios_only_skips_docs_and_config(self):
+        Path("App.swift").write_text("// Changed source\n")
+        self.assertEqual(changes.selected_checks("pull_request", self.base, self.commit()),
+                         {"ios": True, "docs": False, "config": False})
+
+    def test_detector_writes_workflow_outputs(self):
+        Path("README.md").write_text("Updated\n")
+        head = self.commit()
+        output = Path("outputs.txt").resolve()
+        subprocess.run(
+            ["python3", str(ROOT / ".github/scripts/ci-changes.py")], check=True,
+            capture_output=True,
+            env={**os.environ, "EVENT_NAME": "pull_request", "BASE_SHA": self.base,
+                 "HEAD_SHA": head, "GITHUB_OUTPUT": str(output)},
+        )
+        self.assertEqual(output.read_text().splitlines(),
+                         ["should-run-ios=false", "should-run-docs=true", "should-run-config=false"])
+
+    def test_mixed_changes_run_ios_and_docs(self):
+        Path("App.swift").write_text("// Changed source\n")
+        Path("README.md").write_text("Updated\n")
+        self.assertEqual(changes.selected_checks("pull_request", self.base, self.commit()),
+                         {"ios": True, "docs": True, "config": False})
+
+    def test_validator_changes_run_docs_and_config(self):
+        path = Path(".github/scripts/validate-markdown.rb")
+        path.parent.mkdir(parents=True)
+        path.write_text("# Changed validator\n")
+        checks = changes.selected_checks("pull_request", self.base, self.commit())
+        self.assertTrue(checks["docs"])
+        self.assertTrue(checks["config"])
 
     def test_code_configuration_and_unknown_files(self):
         for path in ["App/Test.swift", "Resources/icon.png", "Resources/help.md", "Package.swift", "Package.resolved",
@@ -64,9 +97,10 @@ class ChangeDetectionTests(unittest.TestCase):
         self.assertFalse(changes.should_run("push", self.base, self.commit()))
 
     def test_manual_and_missing_baselines_run(self):
-        self.assertTrue(changes.should_run("workflow_dispatch", self.base, self.base))
+        expected = {"ios": True, "docs": True, "config": True}
+        self.assertEqual(changes.selected_checks("workflow_dispatch", self.base, self.base), expected)
         for base in ["", "0" * 40, "f" * 40]:
-            self.assertTrue(changes.should_run("push", base, self.base))
+            self.assertEqual(changes.selected_checks("push", base, self.base), expected)
 
 
 class ValidatorTests(unittest.TestCase):

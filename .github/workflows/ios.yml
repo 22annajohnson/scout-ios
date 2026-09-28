@@ -32,7 +32,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
           HEAD_SHA: ${{ github.sha }}
-        run: python3 .github/scripts/ios-changes.py
+        run: python3 .github/scripts/ci-changes.py
 
   build-and-test:
     name: Build and test
