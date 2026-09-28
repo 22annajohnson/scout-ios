@@ -16,7 +16,10 @@ def should_run(event, base, head):
     except subprocess.CalledProcessError:
         return True
     paths = result.stdout.split(b"\0")
-    return any(path and not path.lower().endswith(b".md") for path in paths)
+    return any(
+        path and (not path.lower().endswith(b".md") or path.startswith(b"Resources/"))
+        for path in paths
+    )
 
 
 if __name__ == "__main__":

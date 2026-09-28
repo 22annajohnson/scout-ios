@@ -7,7 +7,7 @@ This is the implementation plan and migration record for the user-authorized CI 
 | --- | --- |
 | Markdown validation | Port the Ruby validator; scan root and nested Markdown, including `.github`, excluding build output. |
 | GitHub Actions validation | Port YAML syntax and basic workflow/job structure checks. This is not a full Actions expression or shell linter. |
-| iOS change detection | Skip macOS only when every changed path is Markdown. Run for all other paths, deletions, source renames, missing baselines, and manual dispatch. |
+| iOS change detection | Skip macOS only when every changed path is Markdown outside `Resources/`. Bundled resources always run CI, including Markdown assets. Run for all other paths, source deletions/renames, missing baselines, and manual dispatch. |
 | iOS tests | Retain the existing Makefile simulator build, unit tests, launch smoke test, and result upload. |
 | Dependency updates | Weekly GitHub Actions updates against `develop`, capped at two open PRs. |
 | Bundler cache and Fastlane | Omitted: the new app uses direct Makefile commands and has no Ruby gems. The validators use Ruby's standard library. |

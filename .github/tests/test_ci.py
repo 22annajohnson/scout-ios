@@ -40,7 +40,7 @@ class ChangeDetectionTests(unittest.TestCase):
         self.assertFalse(changes.should_run("pull_request", self.base, self.commit()))
 
     def test_code_configuration_and_unknown_files(self):
-        for path in ["App/Test.swift", "Resources/icon.png", "Package.swift", "Package.resolved",
+        for path in ["App/Test.swift", "Resources/icon.png", "Resources/help.md", "Package.swift", "Package.resolved",
                      "Scout.xcodeproj/project.pbxproj", "Tests/test.swift", "Makefile",
                      "scripts/select-simulator.py", ".github/workflows/ios.yml", "unknown.file"]:
             with self.subTest(path=path):
