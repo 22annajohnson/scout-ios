@@ -15,8 +15,29 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  changes:
+    name: iOS change detection
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      should-run-ios: ${{ steps.changes.outputs.should-run-ios }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Detect changes
+        id: changes
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
+        run: python3 .github/scripts/ci-changes.py
+
   build-and-test:
     name: Build and test
+    needs: changes
+    if: needs.changes.outputs.should-run-ios == 'true'
     runs-on: macos-15
     timeout-minutes: 25
     env:
@@ -41,3 +62,24 @@ jobs:
           path: build/TestResults.xcresult
           if-no-files-found: warn
           retention-days: 7
+
+  ios-required:
+    name: iOS validation
+    if: always()
+    needs: [changes, build-and-test]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check iOS result
+        env:
+          DETECTION: ${{ needs.changes.result }}
+          REQUIRED: ${{ needs.changes.outputs.should-run-ios }}
+          RESULT: ${{ needs.build-and-test.result }}
+        run: |
+          test "$DETECTION" = success
+          if [ "$REQUIRED" = true ]; then
+            test "$RESULT" = success
+          else
+            test "$REQUIRED" = false
+            test "$RESULT" = skipped
+          fi
